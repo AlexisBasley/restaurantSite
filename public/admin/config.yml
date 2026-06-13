@@ -5,6 +5,7 @@ backend:
   name: github
   repo: AlexisBasley/restaurantSite
   branch: main
+  base_url: https://sveltia-cms-auth.alexis-basley.workers.dev
 
 # Dossier où le CMS dépose les images uploadées par le client.
 media_folder: "src/assets/images"
