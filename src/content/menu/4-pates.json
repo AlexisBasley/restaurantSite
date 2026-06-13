@@ -1,0 +1,8 @@
+{
+  "categorie": "Nos Pâtes",
+  "ordre": 4,
+  "plats": [
+    { "nom": "Tagliatelles Carbonara", "description": "", "prix": 12.5 },
+    { "nom": "Pennes Poulet Sauce Champignons", "description": "", "prix": 12.5 }
+  ]
+}

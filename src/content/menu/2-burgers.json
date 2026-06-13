@@ -1,0 +1,14 @@
+{
+  "categorie": "Nos Burgers",
+  "ordre": 2,
+  "plats": [
+    { "nom": "Cheese", "description": "Steak, fromage", "prix": 5.5 },
+    { "nom": "360", "description": "2 steaks 180 gr, fromages", "prix": 13.5, "populaire": true },
+    { "nom": "Double Cheese Bacon Burger", "description": "Sauces au choix", "prix": 7.5 },
+    { "nom": "Chicken Burger", "description": "Poulet pané, fromage", "prix": 9.0 },
+    { "nom": "Double Cheese Jambon Burger", "description": "Sauces au choix", "prix": 8.5 },
+    { "nom": "180", "description": "1 steak 180 gr, frites maison", "prix": 12.0 },
+    { "nom": "Triple Cheeseburger", "description": "3 steaks 45 gr, cheddar", "prix": 9.5 },
+    { "nom": "Double Cheese", "description": "2 steaks, fromage", "prix": 7.5 }
+  ]
+}

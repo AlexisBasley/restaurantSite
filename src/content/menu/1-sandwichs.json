@@ -1,0 +1,18 @@
+{
+  "categorie": "Nos Sandwichs",
+  "ordre": 1,
+  "plats": [
+    { "nom": "Le Grec", "description": "Émincé de poulet, marinade maison", "prix": 11.0 },
+    { "nom": "Le Chicken Pronto", "description": "Chicken tandoori, steak, cheddar", "prix": 12.5, "populaire": true },
+    { "nom": "Le Montagnard", "description": "2 steaks, bacon de dinde, lardons, pomme de terre, fromage à raclette", "prix": 12.9 },
+    { "nom": "Le Tenders", "description": "Tenders, cheddar", "prix": 10.9 },
+    { "nom": "Le Triple Steak", "description": "3 steaks, bacon, cheddar", "prix": 12.5 },
+    { "nom": "Le Cool", "description": "Steak, cordon bleu, cheddar", "prix": 12.4 },
+    { "nom": "Le Buffalo", "description": "Escalope, bacon, cheddar", "prix": 12.4 },
+    { "nom": "Le Chicken Tandoori", "description": "Poulet tandoori", "prix": 11.2 },
+    { "nom": "Le Rio", "description": "Escalope, steak, cheddar", "prix": 12.4 },
+    { "nom": "Le Miya", "description": "Steak, jambon de dinde, chorizo, cheddar", "prix": 11.5 },
+    { "nom": "Le Délice", "description": "Escalope, cordon bleu, cheddar", "prix": 12.5 },
+    { "nom": "L'Escalope Poulet", "description": "Escalope, cheddar", "prix": 11.2 }
+  ]
+}

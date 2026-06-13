@@ -1,0 +1,36 @@
+---
+import { getEntry } from 'astro:content';
+const site = await getEntry('config', 'site');
+const { nom, ville } = site.data;
+const annee = new Date().getFullYear();
+---
+
+<footer class="pied">
+  <div class="contenu pied-inner">
+    <span class="pied-logo">{nom}</span>
+    <span class="pied-copy">© {annee} {nom} · {ville}</span>
+  </div>
+</footer>
+
+<style>
+  .pied {
+    background: var(--noir);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .pied-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .pied-logo {
+    font-family: var(--police-titre);
+    font-weight: 800;
+    color: var(--jaune);
+  }
+  .pied-copy {
+    font-size: 0.9rem;
+  }
+</style>

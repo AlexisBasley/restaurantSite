@@ -1,0 +1,18 @@
+{
+  "nom": "Casa Pronto",
+  "slogan": "Burgers, pizzas & sandwichs — halal, faits maison.",
+  "description": "Burgers généreux, pizzas, sandwichs et frites maison. Cuisine halal préparée chaque jour, à Vigneux-sur-Seine. Sur place, à emporter ou en livraison.",
+  "telephone": "07 69 82 34 96",
+  "adresse": "59 rue Jean Corringer",
+  "ville": "91270 Vigneux-sur-Seine",
+  "carteUrl": "https://www.google.com/maps?q=Casa+Pronto+59+rue+Jean+Corringer+Vigneux-sur-Seine",
+  "commandeUrl": "https://www.ubereats.com/fr/store/casa-pronto/bmaoDq1NSQmqfP2t4M5niA",
+  "horaires": [
+    { "jours": "Tous les jours", "heures": "11h30 – 22h45" }
+  ],
+  "reseaux": {
+    "instagram": "",
+    "facebook": "",
+    "googleMaps": "https://www.google.com/maps?q=Casa+Pronto+59+rue+Jean+Corringer+Vigneux-sur-Seine"
+  }
+}

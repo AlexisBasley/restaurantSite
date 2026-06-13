@@ -1,0 +1,80 @@
+# Configuration de l'interface d'administration (Sveltia CMS).
+# Le client modifie le contenu ici, les changements sont publiés automatiquement.
+
+backend:
+  name: github
+  repo: AlexisBasley/restaurantSite
+  branch: main
+
+# Dossier où le CMS dépose les images uploadées par le client.
+media_folder: "src/assets/images"
+public_folder: "/images"
+
+# Langue de l'interface
+locale: "fr"
+
+collections:
+  # --- Informations générales du restaurant ---
+  - name: "config"
+    label: "Infos du restaurant"
+    files:
+      - name: "site"
+        label: "Coordonnées & horaires"
+        file: "src/content/config/site.json"
+        fields:
+          - { name: "nom", label: "Nom du restaurant", widget: "string" }
+          - { name: "slogan", label: "Slogan", widget: "string" }
+          - { name: "description", label: "Description courte", widget: "text" }
+          - { name: "telephone", label: "Téléphone", widget: "string" }
+          - { name: "adresse", label: "Adresse (rue)", widget: "string" }
+          - { name: "ville", label: "Code postal + ville", widget: "string" }
+          - { name: "carteUrl", label: "Lien Google Maps (carte)", widget: "string" }
+          - { name: "commandeUrl", label: "Lien de commande (Uber Eats / Deliveroo)", widget: "string", required: false }
+          - name: "horaires"
+            label: "Horaires"
+            widget: "list"
+            fields:
+              - { name: "jours", label: "Jours", widget: "string" }
+              - { name: "heures", label: "Heures", widget: "string" }
+          - name: "reseaux"
+            label: "Réseaux sociaux"
+            widget: "object"
+            fields:
+              - { name: "instagram", label: "Instagram (URL)", widget: "string", required: false }
+              - { name: "facebook", label: "Facebook (URL)", widget: "string", required: false }
+              - { name: "googleMaps", label: "Google Maps (URL)", widget: "string", required: false }
+
+      - name: "galerie"
+        label: "Galerie photos"
+        file: "src/content/config/galerie.json"
+        fields:
+          - name: "photos"
+            label: "Photos"
+            widget: "list"
+            fields:
+              - { name: "image", label: "Photo", widget: "image" }
+              - { name: "legende", label: "Légende", widget: "string", required: false }
+
+  # --- Le menu : une entrée par catégorie ---
+  - name: "menu"
+    label: "Menu"
+    label_singular: "Catégorie"
+    folder: "src/content/menu"
+    extension: "json"
+    format: "json"
+    create: true
+    slug: "{{ordre}}-{{categorie}}"
+    summary: "{{categorie}}"
+    fields:
+      - { name: "categorie", label: "Nom de la catégorie", widget: "string" }
+      - { name: "ordre", label: "Ordre d'affichage", widget: "number", value_type: "int", default: 1 }
+      - name: "plats"
+        label: "Plats"
+        widget: "list"
+        summary: "{{fields.nom}} — {{fields.prix}} €"
+        fields:
+          - { name: "nom", label: "Nom du plat", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - { name: "prix", label: "Prix (€)", widget: "number", value_type: "float", step: 0.1 }
+          - { name: "image", label: "Photo (optionnel)", widget: "image", required: false }
+          - { name: "populaire", label: "Marquer comme populaire ★", widget: "boolean", default: false, required: false }

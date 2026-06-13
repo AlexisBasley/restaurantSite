@@ -1,0 +1,8 @@
+{
+  "categorie": "Nos Pizzas 30 cm",
+  "ordre": 3,
+  "plats": [
+    { "nom": "4 Fromages", "description": "", "prix": 15.0 },
+    { "nom": "Mexicaine", "description": "", "prix": 17.0 }
+  ]
+}

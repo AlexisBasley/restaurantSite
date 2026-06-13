@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const categories = (await getCollection('menu')).sort(
+  (a, b) => a.data.ordre - b.data.ordre
+);
+
+const formatPrix = (p: number) =>
+  p.toLocaleString('fr-FR', { minimumFractionDigits: 2 }) + ' €';
+---
+
+<section id="menu" class="section menu">
+  <div class="contenu">
+    <h2 class="section-titre">Notre <span>Menu</span></h2>
+    <p class="section-soustitre">Préparé chaque jour avec des produits frais</p>
+
+    {
+      categories.map((cat) => (
+        <div class="categorie">
+          <h3 class="categorie-titre">{cat.data.categorie}</h3>
+          <div class="plats">
+            {cat.data.plats.map((plat) => (
+              <article class="plat">
+                {plat.image && (
+                  <Image src={plat.image} alt={plat.nom} class="plat-img" width={120} height={120} />
+                )}
+                <div class="plat-corps">
+                  <div class="plat-ligne">
+                    <h4 class="plat-nom">
+                      {plat.nom}
+                      {plat.populaire && <span class="badge">★ Populaire</span>}
+                    </h4>
+                    <span class="plat-prix">{formatPrix(plat.prix)}</span>
+                  </div>
+                  {plat.description && <p class="plat-desc">{plat.description}</p>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .categorie {
+    margin-bottom: 3rem;
+  }
+  .categorie-titre {
+    font-size: 1.5rem;
+    color: var(--rouge);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--jaune);
+    display: inline-block;
+  }
+  .plats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+  .plat {
+    display: flex;
+    gap: 1rem;
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: var(--ombre);
+    transition: transform 0.15s ease;
+  }
+  .plat:hover {
+    transform: translateY(-3px);
+  }
+  .plat-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .plat-corps {
+    flex: 1;
+  }
+  .plat-ligne {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .plat-nom {
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .badge {
+    display: inline-block;
+    font-family: var(--police-texte);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--rouge);
+    background: #ffe9e5;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+  .plat-prix {
+    font-family: var(--police-titre);
+    font-weight: 800;
+    color: var(--rouge);
+    white-space: nowrap;
+  }
+  .plat-desc {
+    color: var(--gris);
+    font-size: 0.92rem;
+    margin-top: 0.25rem;
+  }
+</style>

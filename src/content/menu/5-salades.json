@@ -1,0 +1,7 @@
+{
+  "categorie": "Nos Salades",
+  "ordre": 5,
+  "plats": [
+    { "nom": "Salade César", "description": "", "prix": 12.0 }
+  ]
+}

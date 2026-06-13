@@ -1,0 +1,145 @@
+---
+import { getEntry } from 'astro:content';
+const site = await getEntry('config', 'site');
+const { adresse, ville, telephone, carteUrl, horaires, reseaux } = site.data;
+const telLien = `tel:${telephone.replace(/\s/g, '')}`;
+---
+
+<section id="infos" class="section infos">
+  <div class="contenu grille-infos">
+    <div class="bloc">
+      <h2 class="section-titre" style="text-align:left">Horaires <span>& accès</span></h2>
+
+      <h3 class="bloc-titre">🕒 Horaires d'ouverture</h3>
+      <ul class="horaires">
+        {
+          horaires.map((h) => (
+            <li>
+              <span class="jours">{h.jours}</span>
+              <span class="heures">{h.heures}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h3 class="bloc-titre">📍 Nous trouver</h3>
+      <p class="adresse">{adresse}<br />{ville}</p>
+
+      <h3 class="bloc-titre">📞 Contact</h3>
+      <p><a href={telLien} class="lien-tel">{telephone}</a></p>
+
+      <div class="reseaux">
+        {reseaux.instagram && <a href={reseaux.instagram} target="_blank" rel="noopener">Instagram</a>}
+        {reseaux.facebook && <a href={reseaux.facebook} target="_blank" rel="noopener">Facebook</a>}
+        {reseaux.googleMaps && <a href={reseaux.googleMaps} target="_blank" rel="noopener">Google Maps</a>}
+      </div>
+    </div>
+
+    <a href={carteUrl} target="_blank" rel="noopener" class="carte">
+      <div class="carte-inner">
+        <span class="carte-pin">📍</span>
+        <strong>{adresse}</strong>
+        <span>{ville}</span>
+        <span class="carte-cta">Ouvrir dans Google Maps →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+  .infos {
+    background: var(--creme);
+  }
+  .grille-infos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .bloc-titre {
+    font-size: 1.1rem;
+    margin: 1.75rem 0 0.6rem;
+  }
+  .horaires {
+    list-style: none;
+  }
+  .horaires li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  }
+  .jours {
+    font-weight: 600;
+  }
+  .heures {
+    color: var(--gris);
+    text-align: right;
+  }
+  .adresse {
+    font-size: 1.05rem;
+  }
+  .lien-tel {
+    font-family: var(--police-titre);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--rouge);
+  }
+  .reseaux {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .reseaux a {
+    font-weight: 600;
+    color: var(--rouge);
+    border: 2px solid var(--rouge);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    transition: all 0.15s ease;
+  }
+  .reseaux a:hover {
+    background: var(--rouge);
+    color: var(--blanc);
+  }
+  .carte {
+    display: block;
+    min-height: 340px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--rouge) 0%, var(--orange) 100%);
+    box-shadow: var(--ombre);
+    color: var(--blanc);
+    transition: transform 0.15s ease;
+  }
+  .carte:hover {
+    transform: translateY(-3px);
+  }
+  .carte-inner {
+    height: 100%;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 2rem;
+  }
+  .carte-pin {
+    font-size: 3rem;
+  }
+  .carte-cta {
+    margin-top: 1rem;
+    font-weight: 700;
+    border: 2px solid var(--blanc);
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+  }
+  @media (max-width: 760px) {
+    .grille-infos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
